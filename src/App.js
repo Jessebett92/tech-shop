@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+import NavigationContainer from "./components/navigation/navigation-container";
+import Home from "./components/pages/home";
+import Products from "./components/pages/products";
+import Contact from "./components/pages/contact";
+import Factory from "./components/pages/factory";
+import LoginPage from "./components/auth/login";
+
+import SignUp from "./components/auth/sign-up";
+
+import "./styles/main.scss";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="content-wrapper">
+      <Router>
+        <NavigationContainer />
+
+        <div className="component-display-container">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/products" component={Products} />
+            <Route path="/factory" component={Factory} />
+
+            <Route path="/contact" component={Contact} />
+            <Route path="/login-sign-up" component={LoginPage} />
+            <Route path="/sign-up" component={SignUp} />
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
