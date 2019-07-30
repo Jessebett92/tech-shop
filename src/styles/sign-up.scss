@@ -1,0 +1,44 @@
+.sign-up-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  height: 37em;
+  margin: 3em;
+
+  .welcome-statement {
+    width: 100%;
+    text-align: center;
+  }
+
+  .sign-up-page {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1em;
+    width: 100%;
+    height: 75%;
+
+    .sign-up-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid;
+    }
+
+    .sign-up-right {
+      border: 1px solid;
+
+      .sign-up-form {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+
+        input {
+          width: 80%;
+        }
+      }
+    }
+  }
+}

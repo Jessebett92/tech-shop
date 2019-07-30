@@ -12,26 +12,40 @@ import SignUp from "./components/auth/sign-up";
 
 import "./styles/main.scss";
 
-const App = () => {
-  return (
-    <div className="content-wrapper">
-      <Router>
-        <NavigationContainer />
+class App extends Component {
+  constructor() {
+    super();
 
-        <div className="component-display-container">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/products" component={Products} />
-            <Route path="/factory" component={Factory} />
+    this.state = {
+      loggedInStatus: "NOT_LOGGED_IN"
+    };
+  }
 
-            <Route path="/contact" component={Contact} />
-            <Route path="/login-sign-up" component={LoginPage} />
-            <Route path="/sign-up" component={SignUp} />
-          </Switch>
-        </div>
-      </Router>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className="content-wrapper">
+        <Router>
+          <NavigationContainer />
+
+          <div className="component-display-container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/products" component={Products} />
+              <Route path="/factory" component={Factory} />
+
+              <Route path="/contact" component={Contact} />
+              <Route path="/login-sign-up" component={LoginPage} />
+              <Route
+                path="/sign-up"
+                component={SignUp}
+                loggedInStatus={this.state.loggedInStatus}
+              />
+            </Switch>
+          </div>
+        </Router>
+      </div>
+    );
+  }
+}
 
 export default App;
