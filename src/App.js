@@ -19,7 +19,28 @@ class App extends Component {
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN"
     };
+    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
+    this.handleUnSuccessfulLogin = this.handleUnSuccessfulLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
+
+  handleSuccessfulLogin = () => {
+    this.setState({
+      loggedInStatus: "LOGGED_IN"
+    });
+  };
+
+  handleUnSuccessfulLogin = () => {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN"
+    });
+  };
+
+  handleLogout = () => {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN"
+    });
+  };
 
   render() {
     return (
@@ -30,15 +51,29 @@ class App extends Component {
           <div className="component-display-container">
             <Switch>
               <Route exact path="/" component={Home} />
+
               <Route path="/products" component={Products} />
+
               <Route path="/factory" component={Factory} />
 
               <Route path="/contact" component={Contact} />
-              <Route path="/login-sign-up" component={LoginPage} />
+
+              <Route
+                path="/login-sign-up"
+                component={LoginPage}
+                loggedInStatus={this.state.loggedInStatus}
+                handleSuccessfulLogin={this.handleSuccessfulLogin}
+                handleUnSuccessfulLogin={this.handleUnSuccessfulLogin}
+                handleLogout={this.handleLogout}
+              />
+
               <Route
                 path="/sign-up"
                 component={SignUp}
                 loggedInStatus={this.state.loggedInStatus}
+                handleSuccessfulLogin={this.handleSuccessfulLogin}
+                handleUnSuccessfulLogin={this.handleUnSuccessfulLogin}
+                handleLogout={this.handleLogout}
               />
             </Switch>
           </div>

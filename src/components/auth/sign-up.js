@@ -13,7 +13,9 @@ const SignUp = props => {
             <input type="text" placeholder="Enter a valid email address" />
             <input type="password" placeholder="Create Your Password" />
             <input type="password" placeholder="Re-enter Your Password" />
-            <button type="submit">Sign Up</button>
+            <button className="btn" type="submit">
+              Sign Up
+            </button>
           </form>
         </div>
       </div>
